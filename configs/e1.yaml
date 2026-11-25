@@ -1,0 +1,3 @@
+# E1: rate-accuracy on a clean channel
+budgets_bpe: [0.5, 1.0, 1.5, 2.0, 3.0, 4.0]   # bits per latent element
+policies: [uniform, variance, task_kws, task_sid, random]

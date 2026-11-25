@@ -1,0 +1,4 @@
+# E4: reconstruction quality and cost
+budgets_bpe: [1.0, 2.0, 3.0]
+policies: [uniform, variance, task_kws, task_sid]
+stoi_subset: 500

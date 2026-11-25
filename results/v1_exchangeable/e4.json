@@ -1,0 +1,265 @@
+{
+ "experiment": "e4",
+ "config_hash": "3d918110aa14",
+ "config": {
+  "seed": 0,
+  "ae_seeds": [
+   0,
+   1,
+   2
+  ],
+  "paths": {
+   "data_root": "/kaggle/working/speech_commands_v2",
+   "work_dir": "/kaggle/input/notebooks/saf2003/taskcodec-train-ae",
+   "results_dir": "results"
+  },
+  "data": {
+   "urls": [
+    "http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz",
+    "https://storage.googleapis.com/download.tensorflow.org/data/speech_commands_v0.02.tar.gz"
+   ],
+   "expected_min_clips": 100000,
+   "n_speakers": 100,
+   "sid_split": [
+    0.7,
+    0.15,
+    0.15
+   ],
+   "stoi_subset": 500,
+   "max_clips": null
+  },
+  "audio": {
+   "sample_rate": 16000,
+   "clip_samples": 16000,
+   "n_fft": 512,
+   "win_length": 400,
+   "hop_length": 160,
+   "n_mels": 40,
+   "fmin": 20.0,
+   "fmax": 7600.0,
+   "frames": 104,
+   "log_eps": 1e-06,
+   "gl_iters": 48
+  },
+  "latent": {
+   "groups": 8,
+   "total_dim": 64,
+   "b_min": 0,
+   "b_max": 8,
+   "clip_k": 3.0
+  },
+  "tasks": {
+   "epochs": 25,
+   "batch_size": 256,
+   "lr": 0.002,
+   "weight_decay": 0.0001,
+   "channels": [
+    32,
+    64,
+    96,
+    128
+   ],
+   "dropout": 0.3,
+   "shift_frames": 8
+  },
+  "ae": {
+   "channels": [
+    32,
+    64,
+    96
+   ],
+   "epochs": 30,
+   "batch_size": 256,
+   "lr": 0.002,
+   "sc_weight": 0.1,
+   "aug": {
+    "bits_min": 1,
+    "bits_max": 6,
+    "p_zero": 0.05,
+    "p_loss_aug": 0.3,
+    "loss_max": 0.4
+   },
+   "stats_clips": 20000
+  },
+  "sensitivity": {
+   "max_clips": 4000
+  },
+  "channel": {
+   "chunk_len": 1,
+   "protect_frac": 0.25,
+   "burst_len": 3.0,
+   "draws": 3
+  },
+  "eval": {
+   "batch_size": 2048,
+   "bootstrap": 10000,
+   "ci": 0.95,
+   "random_draws": 3
+  },
+  "budgets_bpe": [
+   1.0,
+   2.0,
+   3.0
+  ],
+  "policies": [
+   "uniform",
+   "variance",
+   "task_kws",
+   "task_sid"
+  ],
+  "stoi_subset": 500
+ },
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "git_commit": null,
+ "wall_s": 35.8,
+ "gpu_s": 35.8,
+ "dataset_counts": {
+  "ae_train": 81212,
+  "kws_val": 9981,
+  "kws_test": 11005,
+  "sid_val": 2082,
+  "sid_test": 2101,
+  "n_words": 35,
+  "n_speakers": 100,
+  "stoi_clips": 500
+ },
+ "rows": [
+  {
+   "policy": "uniform",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.2188208419482636,
+    "lo": 1.21465029439781,
+    "hi": 1.2229650493614082
+   }
+  },
+  {
+   "policy": "uniform",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 0.8851470779365217,
+    "lo": 0.8826076351216521,
+    "hi": 0.8877340771153617
+   }
+  },
+  {
+   "policy": "uniform",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 0.777967590296718,
+    "lo": 0.7754684112846566,
+    "hi": 0.7805554295277755
+   }
+  },
+  {
+   "policy": "variance",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.218820842386971,
+    "lo": 1.2146502953216682,
+    "hi": 1.2229650509377763
+   }
+  },
+  {
+   "policy": "variance",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 0.8851470777442487,
+    "lo": 0.8826076344565499,
+    "hi": 0.8877340766005574
+   }
+  },
+  {
+   "policy": "variance",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 0.7779675895547066,
+    "lo": 0.7754684110204166,
+    "hi": 0.780555429062732
+   }
+  },
+  {
+   "policy": "task_kws",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.2188208426686105,
+    "lo": 1.2146502954882148,
+    "hi": 1.2229650508073826
+   }
+  },
+  {
+   "policy": "task_kws",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 0.88514707748969,
+    "lo": 0.8826076345851155,
+    "hi": 0.8877340772188776
+   }
+  },
+  {
+   "policy": "task_kws",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 0.7779675902764075,
+    "lo": 0.7754684113869541,
+    "hi": 0.7805554294794365
+   }
+  },
+  {
+   "policy": "task_sid",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.2188208420890831,
+    "lo": 1.2146502943735726,
+    "hi": 1.2229650501805998
+   }
+  },
+  {
+   "policy": "task_sid",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 0.8851470774978142,
+    "lo": 0.8826076345486242,
+    "hi": 0.8877340769775208
+   }
+  },
+  {
+   "policy": "task_sid",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 0.7779675902263081,
+    "lo": 0.775468411474628,
+    "hi": 0.7805554295862022
+   }
+  }
+ ],
+ "complexity": {
+  "autoencoder_params": 360705,
+  "encoder_params": 151456,
+  "decoder_params": 209249,
+  "encoder_macs": 28254720,
+  "decoder_macs": 35010560,
+  "kws_params": 194243,
+  "kws_macs": 41941760,
+  "sid_params": 210948,
+  "sid_macs": 41958400
+ },
+ "stoi_ceiling_griffin_lim": null,
+ "stoi_note": "pystoi not importable in this environment; STOI not computed"
+}

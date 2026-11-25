@@ -1,0 +1,69 @@
+# Base configuration. Every experiment config is merged over this file.
+seed: 0
+ae_seeds: [0, 1, 2]          # autoencoder training seeds (main G only)
+paths:
+  data_root: /kaggle/working/speech_commands_v2
+  work_dir: /kaggle/working
+  results_dir: results
+data:
+  urls:
+    - http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz
+    - https://storage.googleapis.com/download.tensorflow.org/data/speech_commands_v0.02.tar.gz
+  expected_min_clips: 100000
+  n_speakers: 100            # K for closed-set speaker ID
+  sid_split: [0.7, 0.15, 0.15]
+  stoi_subset: 500
+  max_clips: null            # debug only: cap the number of clips read
+audio:
+  sample_rate: 16000
+  clip_samples: 16000
+  n_fft: 512
+  win_length: 400
+  hop_length: 160
+  n_mels: 40
+  fmin: 20.0
+  fmax: 7600.0
+  frames: 104                # 101 STFT frames padded to a multiple of 8
+  log_eps: 1.0e-6
+  gl_iters: 48
+latent:
+  groups: 8                  # G
+  total_dim: 64              # channels per time step, d = total_dim / G
+  b_min: 0
+  b_max: 8
+  clip_k: 3.0                # quantizer range = +-k * sigma
+tasks:
+  epochs: 25
+  batch_size: 256
+  lr: 2.0e-3
+  weight_decay: 1.0e-4
+  channels: [32, 64, 96, 128]
+  dropout: 0.3
+  shift_frames: 8
+ae:
+  channels: [32, 64, 96]
+  epochs: 20
+  batch_size: 256
+  lr: 2.0e-3
+  sc_weight: 0.1
+  task_weight: 1.0           # feature-matching loss on the frozen KWS and SID embeddings
+  aug:
+    bits_min: 1
+    bits_max: 6
+    p_zero: 0.05             # chance a group is sent with 0 bits
+    p_loss_aug: 0.3          # fraction of training clips that see packet loss
+    loss_max: 0.4
+    p_nested: 0.5            # fraction of clips trained with only the first k groups (ordered latent)
+  stats_clips: 20000         # clips used for latent mean / sigma
+sensitivity:
+  max_clips: 4000
+channel:
+  chunk_len: 1               # time steps per packet
+  protect_frac: 0.25         # fraction of groups protected by UEP
+  burst_len: 3.0             # Gilbert-Elliott mean burst length (packets)
+  draws: 3                   # independent channel realisations per clip
+eval:
+  batch_size: 2048
+  bootstrap: 10000
+  ci: 0.95
+  random_draws: 3            # random-allocation control draws

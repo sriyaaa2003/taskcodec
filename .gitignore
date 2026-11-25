@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.pt
+*.npy
+kaggle.json
+access_token*
+kaggle/_out/
+kaggle/code_dataset/taskcodec/
+kaggle/code_dataset/configs/
+
+# internal design notes, kept on this machine only
+docs/BLUEPRINT.md

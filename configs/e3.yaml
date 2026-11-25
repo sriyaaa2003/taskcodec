@@ -1,0 +1,2 @@
+# E3: task specificity (allocation tuned for task A evaluated on task B)
+budgets_bpe: [1.0, 2.0]

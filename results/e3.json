@@ -1,0 +1,292 @@
+{
+ "experiment": "e3",
+ "config_hash": "dcd5cbc83cac",
+ "config": {
+  "seed": 0,
+  "ae_seeds": [
+   0,
+   1,
+   2
+  ],
+  "paths": {
+   "data_root": "/kaggle/working/speech_commands_v2",
+   "work_dir": "/kaggle/input/notebooks/saf2003/taskcodec-train-ae",
+   "results_dir": "results"
+  },
+  "data": {
+   "urls": [
+    "http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz",
+    "https://storage.googleapis.com/download.tensorflow.org/data/speech_commands_v0.02.tar.gz"
+   ],
+   "expected_min_clips": 100000,
+   "n_speakers": 100,
+   "sid_split": [
+    0.7,
+    0.15,
+    0.15
+   ],
+   "stoi_subset": 500,
+   "max_clips": null
+  },
+  "audio": {
+   "sample_rate": 16000,
+   "clip_samples": 16000,
+   "n_fft": 512,
+   "win_length": 400,
+   "hop_length": 160,
+   "n_mels": 40,
+   "fmin": 20.0,
+   "fmax": 7600.0,
+   "frames": 104,
+   "log_eps": 1e-06,
+   "gl_iters": 48
+  },
+  "latent": {
+   "groups": 8,
+   "total_dim": 64,
+   "b_min": 0,
+   "b_max": 8,
+   "clip_k": 3.0
+  },
+  "tasks": {
+   "epochs": 25,
+   "batch_size": 256,
+   "lr": 0.002,
+   "weight_decay": 0.0001,
+   "channels": [
+    32,
+    64,
+    96,
+    128
+   ],
+   "dropout": 0.3,
+   "shift_frames": 8
+  },
+  "ae": {
+   "channels": [
+    32,
+    64,
+    96
+   ],
+   "epochs": 20,
+   "batch_size": 256,
+   "lr": 0.002,
+   "sc_weight": 0.1,
+   "task_weight": 1.0,
+   "aug": {
+    "bits_min": 1,
+    "bits_max": 6,
+    "p_zero": 0.05,
+    "p_loss_aug": 0.3,
+    "loss_max": 0.4,
+    "p_nested": 0.5
+   },
+   "stats_clips": 20000
+  },
+  "sensitivity": {
+   "max_clips": 4000
+  },
+  "channel": {
+   "chunk_len": 1,
+   "protect_frac": 0.25,
+   "burst_len": 3.0,
+   "draws": 3
+  },
+  "eval": {
+   "batch_size": 2048,
+   "bootstrap": 10000,
+   "ci": 0.95,
+   "random_draws": 3
+  },
+  "budgets_bpe": [
+   1.0,
+   2.0
+  ]
+ },
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "git_commit": null,
+ "wall_s": 42.1,
+ "gpu_s": 42.1,
+ "dataset_counts": {
+  "ae_train": 81212,
+  "kws_val": 9981,
+  "kws_test": 11005,
+  "sid_val": 2082,
+  "sid_test": 2101,
+  "n_words": 35,
+  "n_speakers": 100,
+  "stoi_clips": 500
+ },
+ "rows": [
+  {
+   "bpe": 1.0,
+   "tuned_for": "kws",
+   "evaluated_on": "kws",
+   "mean": 0.8448281084355597,
+   "lo": 0.8392548841435711,
+   "hi": 0.8503104649401787
+  },
+  {
+   "bpe": 1.0,
+   "tuned_for": "kws",
+   "evaluated_on": "sid",
+   "mean": 0.5330794859590671,
+   "lo": 0.5164207520228463,
+   "hi": 0.5500555291131206
+  },
+  {
+   "bpe": 1.0,
+   "tuned_for": "sid",
+   "evaluated_on": "kws",
+   "mean": 0.8448281084355597,
+   "lo": 0.8392548841435711,
+   "hi": 0.8503104649401787
+  },
+  {
+   "bpe": 1.0,
+   "tuned_for": "sid",
+   "evaluated_on": "sid",
+   "mean": 0.5330794859590671,
+   "lo": 0.5164207520228463,
+   "hi": 0.5500555291131206
+  },
+  {
+   "bpe": 1.0,
+   "tuned_for": "variance",
+   "evaluated_on": "kws",
+   "mean": 0.8636983189459336,
+   "lo": 0.8584279872785098,
+   "hi": 0.8689080720884447
+  },
+  {
+   "bpe": 1.0,
+   "tuned_for": "uniform",
+   "evaluated_on": "kws",
+   "mean": 0.8448281084355597,
+   "lo": 0.8392548841435711,
+   "hi": 0.8503104649401787
+  },
+  {
+   "bpe": 1.0,
+   "tuned_for": "variance",
+   "evaluated_on": "sid",
+   "mean": 0.6020942408376964,
+   "lo": 0.5857528161193082,
+   "hi": 0.6185943201650007
+  },
+  {
+   "bpe": 1.0,
+   "tuned_for": "uniform",
+   "evaluated_on": "sid",
+   "mean": 0.5330794859590671,
+   "lo": 0.5164207520228463,
+   "hi": 0.5500555291131206
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "kws",
+   "evaluated_on": "kws",
+   "mean": 0.9065273360593669,
+   "lo": 0.9018325003786157,
+   "hi": 0.9111313039527488
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "kws",
+   "evaluated_on": "sid",
+   "mean": 0.6690464858004125,
+   "lo": 0.6527050610820244,
+   "hi": 0.6853879105188005
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "sid",
+   "evaluated_on": "kws",
+   "mean": 0.9065273360593669,
+   "lo": 0.9018325003786157,
+   "hi": 0.9111313039527488
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "sid",
+   "evaluated_on": "sid",
+   "mean": 0.6690464858004125,
+   "lo": 0.6527050610820244,
+   "hi": 0.6853879105188005
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "variance",
+   "evaluated_on": "kws",
+   "mean": 0.9090716341057095,
+   "lo": 0.9044373769498714,
+   "hi": 0.9136453127366349
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "uniform",
+   "evaluated_on": "kws",
+   "mean": 0.9065273360593669,
+   "lo": 0.9018325003786157,
+   "hi": 0.9111313039527488
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "variance",
+   "evaluated_on": "sid",
+   "mean": 0.7309217832778041,
+   "lo": 0.7155322862129145,
+   "hi": 0.7464699349516104
+  },
+  {
+   "bpe": 2.0,
+   "tuned_for": "uniform",
+   "evaluated_on": "sid",
+   "mean": 0.6690464858004125,
+   "lo": 0.6527050610820244,
+   "hi": 0.6853879105188005
+  }
+ ],
+ "paired": [
+  {
+   "bpe": 1.0,
+   "evaluated_on": "kws",
+   "a": "tuned_for_kws",
+   "b": "tuned_for_sid",
+   "diff": 0.0,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "bpe": 1.0,
+   "evaluated_on": "sid",
+   "a": "tuned_for_sid",
+   "b": "tuned_for_kws",
+   "diff": 0.0,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "bpe": 2.0,
+   "evaluated_on": "kws",
+   "a": "tuned_for_kws",
+   "b": "tuned_for_sid",
+   "diff": 0.0,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "bpe": 2.0,
+   "evaluated_on": "sid",
+   "a": "tuned_for_sid",
+   "b": "tuned_for_kws",
+   "diff": 0.0,
+   "lo": 0.0,
+   "hi": 0.0
+  }
+ ]
+}

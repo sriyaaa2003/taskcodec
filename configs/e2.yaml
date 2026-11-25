@@ -1,0 +1,5 @@
+# E2: robustness under packet loss at a fixed total channel budget
+budget_bpe: 2.0                                # TOTAL channel bits incl. repetitions
+loss_rates: [0.0, 0.05, 0.1, 0.2, 0.3, 0.5]
+loss_models: [iid, ge]
+schemes: [none, eep, uep_task, uep_random]

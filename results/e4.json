@@ -1,0 +1,343 @@
+{
+ "experiment": "e4",
+ "config_hash": "b03c2e7f477c",
+ "config": {
+  "seed": 0,
+  "ae_seeds": [
+   0,
+   1,
+   2
+  ],
+  "paths": {
+   "data_root": "/kaggle/working/speech_commands_v2",
+   "work_dir": "/kaggle/input/notebooks/saf2003/taskcodec-train-ae",
+   "results_dir": "results"
+  },
+  "data": {
+   "urls": [
+    "http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz",
+    "https://storage.googleapis.com/download.tensorflow.org/data/speech_commands_v0.02.tar.gz"
+   ],
+   "expected_min_clips": 100000,
+   "n_speakers": 100,
+   "sid_split": [
+    0.7,
+    0.15,
+    0.15
+   ],
+   "stoi_subset": 500,
+   "max_clips": null
+  },
+  "audio": {
+   "sample_rate": 16000,
+   "clip_samples": 16000,
+   "n_fft": 512,
+   "win_length": 400,
+   "hop_length": 160,
+   "n_mels": 40,
+   "fmin": 20.0,
+   "fmax": 7600.0,
+   "frames": 104,
+   "log_eps": 1e-06,
+   "gl_iters": 48
+  },
+  "latent": {
+   "groups": 8,
+   "total_dim": 64,
+   "b_min": 0,
+   "b_max": 8,
+   "clip_k": 3.0
+  },
+  "tasks": {
+   "epochs": 25,
+   "batch_size": 256,
+   "lr": 0.002,
+   "weight_decay": 0.0001,
+   "channels": [
+    32,
+    64,
+    96,
+    128
+   ],
+   "dropout": 0.3,
+   "shift_frames": 8
+  },
+  "ae": {
+   "channels": [
+    32,
+    64,
+    96
+   ],
+   "epochs": 20,
+   "batch_size": 256,
+   "lr": 0.002,
+   "sc_weight": 0.1,
+   "task_weight": 1.0,
+   "aug": {
+    "bits_min": 1,
+    "bits_max": 6,
+    "p_zero": 0.05,
+    "p_loss_aug": 0.3,
+    "loss_max": 0.4,
+    "p_nested": 0.5
+   },
+   "stats_clips": 20000
+  },
+  "sensitivity": {
+   "max_clips": 4000
+  },
+  "channel": {
+   "chunk_len": 1,
+   "protect_frac": 0.25,
+   "burst_len": 3.0,
+   "draws": 3
+  },
+  "eval": {
+   "batch_size": 2048,
+   "bootstrap": 10000,
+   "ci": 0.95,
+   "random_draws": 3
+  },
+  "budgets_bpe": [
+   1.0,
+   2.0,
+   3.0
+  ],
+  "policies": [
+   "uniform",
+   "variance",
+   "task_kws",
+   "task_sid"
+  ],
+  "stoi_subset": 500
+ },
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "git_commit": null,
+ "wall_s": 93.3,
+ "gpu_s": 93.3,
+ "dataset_counts": {
+  "ae_train": 81212,
+  "kws_val": 9981,
+  "kws_test": 11005,
+  "sid_val": 2082,
+  "sid_test": 2101,
+  "n_words": 35,
+  "n_speakers": 100,
+  "stoi_clips": 500
+ },
+ "rows": [
+  {
+   "policy": "uniform",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.3688968118999503,
+    "lo": 1.364631935341122,
+    "hi": 1.3731273228942888
+   },
+   "stoi": {
+    "mean": 0.5925616505897131,
+    "lo": 0.5701133497635438,
+    "hi": 0.6133853418199284
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "uniform",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 1.1927035011361264,
+    "lo": 1.1890621296028991,
+    "hi": 1.196391766757274
+   },
+   "stoi": {
+    "mean": 0.623283222281169,
+    "lo": 0.5998992434974507,
+    "hi": 0.6452620793975451
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "uniform",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 1.109864345827952,
+    "lo": 1.106423004499109,
+    "hi": 1.1133434498948518
+   },
+   "stoi": {
+    "mean": 0.6300285611101533,
+    "lo": 0.6065264369661818,
+    "hi": 0.6519196483079658
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "variance",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.301645093725682,
+    "lo": 1.297499703118499,
+    "hi": 1.3058174060048813
+   },
+   "stoi": {
+    "mean": 0.6019410226926568,
+    "lo": 0.5792275556298475,
+    "hi": 0.6229855709266823
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "variance",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 1.1682585582008473,
+    "lo": 1.1646723576192692,
+    "hi": 1.171930304074263
+   },
+   "stoi": {
+    "mean": 0.6253206755442059,
+    "lo": 0.6019209628975778,
+    "hi": 0.6472857927430198
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "variance",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 1.1056656616241052,
+    "lo": 1.1022440677370768,
+    "hi": 1.109172681540603
+   },
+   "stoi": {
+    "mean": 0.6303252459704545,
+    "lo": 0.6068692032274678,
+    "hi": 0.6523048522269841
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "task_kws",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.368896812192422,
+    "lo": 1.3646319351094465,
+    "hi": 1.3731273220913456
+   },
+   "stoi": {
+    "mean": 0.5925616886347492,
+    "lo": 0.5701133859031383,
+    "hi": 0.613385378476842
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "task_kws",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 1.1927035009194806,
+    "lo": 1.1890621286122867,
+    "hi": 1.1963917670129158
+   },
+   "stoi": {
+    "mean": 0.623283220096311,
+    "lo": 0.5998992464634555,
+    "hi": 0.6452620651108192
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "task_kws",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 1.1098643454054928,
+    "lo": 1.1064230045263252,
+    "hi": 1.1133434497356172
+   },
+   "stoi": {
+    "mean": 0.6300285559093308,
+    "lo": 0.6065264186702,
+    "hi": 0.6519196432374051
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "task_sid",
+   "bpe": 1.0,
+   "kbps": 0.832,
+   "mel_l1": {
+    "mean": 1.3688968118295406,
+    "lo": 1.3646319347786557,
+    "hi": 1.3731273222995963
+   },
+   "stoi": {
+    "mean": 0.5925617325330379,
+    "lo": 0.5701134325995616,
+    "hi": 0.613385422848913
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "task_sid",
+   "bpe": 2.0,
+   "kbps": 1.664,
+   "mel_l1": {
+    "mean": 1.1927035015152563,
+    "lo": 1.189062129359985,
+    "hi": 1.1963917676082854
+   },
+   "stoi": {
+    "mean": 0.6232832232018648,
+    "lo": 0.5998992431831045,
+    "hi": 0.6452620769308501
+   },
+   "stoi_n": 500
+  },
+  {
+   "policy": "task_sid",
+   "bpe": 3.0,
+   "kbps": 2.496,
+   "mel_l1": {
+    "mean": 1.1098643447393073,
+    "lo": 1.1064230031610511,
+    "hi": 1.1133434494351566
+   },
+   "stoi": {
+    "mean": 0.6300285468243947,
+    "lo": 0.6065264208377068,
+    "hi": 0.6519196420274779
+   },
+   "stoi_n": 500
+  }
+ ],
+ "complexity": {
+  "autoencoder_params": 360705,
+  "encoder_params": 151456,
+  "decoder_params": 209249,
+  "encoder_macs": 28254720,
+  "decoder_macs": 35010560,
+  "kws_params": 194243,
+  "kws_macs": 41941760,
+  "sid_params": 210948,
+  "sid_macs": 41958400
+ },
+ "stoi_ceiling_griffin_lim": {
+  "mean": 0.8132034512262026,
+  "lo": 0.7854171251745808,
+  "hi": 0.8385605282103843
+ },
+ "stoi_note": "STOI is computed on Griffin-Lim vocoded audio, so absolute values are pessimistic"
+}

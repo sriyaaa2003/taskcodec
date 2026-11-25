@@ -1,0 +1,26 @@
+{
+  "n_clips": 105829,
+  "n_words": 35,
+  "kws_counts": {
+    "train": 84843,
+    "val": 9981,
+    "test": 11005
+  },
+  "n_speakers": 100,
+  "sid_counts": {
+    "train": 9794,
+    "val": 2082,
+    "test": 2101
+  },
+  "kws_train": {
+    "best_val_acc": 0.9686403870582581
+  },
+  "kws_val_acc": 0.9686403870582581,
+  "kws_test_acc": 0.9668332934379578,
+  "sid_train": {
+    "best_val_acc": 0.9956772327423096
+  },
+  "sid_val_acc": 0.9956772327423096,
+  "sid_test_acc": 0.9952403903007507,
+  "wall_s": 557.0162794589996
+}

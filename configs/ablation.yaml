@@ -1,0 +1,4 @@
+# A1: number of groups G, sensitivity-based vs random allocation
+groups: [4, 8, 16]
+budgets_bpe: [1.0, 2.0]
+policies: [uniform, variance, task_kws, task_sid, random]

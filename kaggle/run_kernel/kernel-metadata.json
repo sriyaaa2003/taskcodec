@@ -1,0 +1,13 @@
+{
+  "id": "saf2003/taskcodec-run",
+  "title": "taskcodec run",
+  "code_file": "run_kernel.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["saf2003/taskcodec-code"],
+  "competition_sources": [],
+  "kernel_sources": ["saf2003/taskcodec-prep", "saf2003/taskcodec-train-ae"]
+}
